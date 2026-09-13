@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "bounce-easing",
+        "value": "eq-bounce",
+        "createdAt": "2026-09-08T15:39:12.110Z",
+        "reason": "False positive: keyframe is a literal audio-equalizer pulse (symmetric height bounce) for the sound-toggle indicator, matched only because the animation name contains 'bounce' - it does not use elastic/overshoot timing"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "createdAt": "2026-09-08T15:39:27.041Z",
+        "reason": "Intentional spring easing (--ease-spring) for deliberate playful micro-interactions: switch-knob slide, close-button rotate, station-dot hover pop - established during the site's visual redesign and kept through multiple rounds of user review/approval, not an accidental default"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "styles.css"
+        ],
+        "createdAt": "2026-09-08T15:39:53.953Z",
+        "reason": "Both hits are top/bottom stripes (legend-item::before at top:0 is the color-coded subway-line legend key; panel-door::before at bottom:0 is an intentional yellow/black caution stripe styled after real train-door safety markings, user-approved) - neither is the left/right card-accent pattern the rule targets"
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-09-08T15:40:11.248Z",
+        "reason": "Established pre-existing pairing from an earlier redesign pass, reviewed and approved by the user across many turns: Inter is used only for body copy, while Barlow Condensed carries the site's distinctive personality everywhere else (headers, station labels, legend, buttons, hub). Changing body typography is outside today's authorized scope (Signal & Trail: trail dots, cursor tilt, scanlines)"
+      }
+    ]
+  }
+}

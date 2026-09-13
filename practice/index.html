@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Joshua Azbel - Line Map</title>
+<meta name="description" content="Joshua Azbel's life, mapped as a subway system." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="viewport">
+  <header class="site-header">
+    <div class="header-top">
+      <p class="eyebrow">Now Boarding</p>
+      <h1>JOSHUA AZBEL</h1>
+      <p class="subtitle">Every line tells a different part of the story. Tap a station to read it.</p>
+    </div>
+    <nav id="legend" class="legend" aria-label="Map lines"></nav>
+  </header>
+
+  <main>
+    <div class="map-shell">
+      <div class="map-scroll" id="mapScroll">
+        <svg id="subwayMap" viewBox="0 0 6900 1400" xmlns="http://www.w3.org/2000/svg" aria-label="Subway map of Joshua Azbel's life"></svg>
+      </div>
+      <div class="map-scanlines" aria-hidden="true"></div>
+    </div>
+
+    <div id="detailBackdrop" class="detail-backdrop"></div>
+    <div id="detailPanel" class="detail-panel" aria-live="polite">
+      <div class="panel-door panel-door-left">
+        <div class="door-window"></div>
+        <div class="door-handle"></div>
+      </div>
+      <div class="panel-door panel-door-right">
+        <div class="door-window"></div>
+        <div class="door-handle"></div>
+      </div>
+      <button id="closePanel" class="close-panel" aria-label="Close">&times;</button>
+      <div id="detailContent" class="detail-content">
+        <p class="detail-placeholder">Tap any station on the map to open its card.</p>
+      </div>
+    </div>
+  </main>
+
+  <div class="advisory-bar" id="advisoryBar" aria-label="Service advisories">
+    <span class="advisory-tag">Service Advisory</span>
+    <div class="advisory-track">
+      <div class="advisory-messages" id="advisoryMessages"></div>
+    </div>
+    <button id="closeAdvisory" class="advisory-close" aria-label="Dismiss service advisories">&times;</button>
+  </div>
+</div>
+
+<section class="legend-key" aria-label="What each line represents">
+  <p class="legend-key-intro">This whole map started with a childhood love of trains.</p>
+  <h2 class="legend-key-title">Line Key</h2>
+  <ul id="legendKeyList" class="legend-key-list"></ul>
+  <div id="soundSwitchRow" class="sound-switch-row">
+    <span class="sound-switch-label">
+      Door chime sound
+      <span class="eq" aria-hidden="true"><span></span><span></span><span></span></span>
+    </span>
+    <button id="soundToggle" class="switch" role="switch" type="button">
+      <span class="switch-track">
+        <span class="switch-knob">
+          <svg class="switch-icon icon-on" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 9v6h3.6l4.9 4.4V4.6L7.6 9H4z" fill="currentColor" />
+            <path d="M16 8.7a5 5 0 0 1 0 6.6" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" />
+            <path d="M18.5 6.2a8.5 8.5 0 0 1 0 11.6" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.55" />
+          </svg>
+          <svg class="switch-icon icon-off" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 9v6h3.6l4.9 4.4V4.6L7.6 9H4z" fill="currentColor" />
+            <path d="M16 9.5l4.6 5M20.6 9.5l-4.6 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <h2 class="footer-title">Get In Touch</h2>
+  <div class="contact-links">
+    <a href="mailto:josh.azbel@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/joshua-azbel" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <p class="copyright">&copy; <span id="year"></span> Joshua Azbel</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
