@@ -69,6 +69,7 @@ const LINES = [
     blurb: "The languages, tools, and skills I work with.",
     color: "#00933C",
     layout: { side: -1, vert: 0, labelDir: -1 }, // straight left (middle tier)
+    bendLast: true, // curve the final station down and in, instead of running it all the way out
     stations: [
       { name: "Coding", desc: "Python, C, C++, Java, JavaScript, and HTML - core languages across systems, web, and general-purpose programming." },
       { name: "AI & Web Dev", desc: "Applied AI/ML work, including an internal tool that converts natural language queries into SQL, plus building interactive front-ends with React." },
@@ -157,6 +158,7 @@ const LINES = [
     blurb: "Groups and communities I've led or been part of.",
     color: "#FF6319",
     layout: { side: 1, vert: 0, labelDir: 1 }, // straight right (middle tier)
+    bendLast: true, // curve the final station down and in, instead of running it all the way out
     stations: [
       {
         name: "QEC",
@@ -247,6 +249,16 @@ function stationPoint(line, index) {
         y: CENTER.y + layout.vert * DIAG_DIST * DIAG,
       };
   if (index === 0) return elbow;
+
+  // Lines flagged bendLast curve their final station down and in on a 45°
+  // diagonal (like the hub elbow, mirrored) instead of running it straight
+  // out — keeps the map from stretching so wide.
+  const last = line.stations.length - 1;
+  if (line.bendLast && index === last) {
+    const prev = { x: elbow.x + layout.side * (index - 1) * STEP, y: elbow.y };
+    return { x: prev.x + layout.side * STEP * DIAG, y: prev.y + STEP * DIAG };
+  }
+
   return { x: elbow.x + layout.side * index * STEP, y: elbow.y };
 }
 
